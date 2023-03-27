@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliding animation</title>
+
+    <style>
+        :root {
+            --color1: #fee;
+            --color2: #113;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+
+            flex-wrap: wrap;
+            row-gap: 10px;
+
+            margin: 15px 0;
+
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            
+            text-align: center;
+
+            font-weight: bold;
+
+            transition-property: color transform border-color;
+            transition-duration: 300ms;
+
+            background-color: var(--color1);
+            color: var(--color2);
+
+            border: 1px solid var(--color2);
+            border-radius: 5px;
+        }
+
+        .button:not(:last-child) {
+            margin-right: 5px;
+        }
+
+        .button:hover {
+            background-color: white;
+
+            transform: translateY(-20%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="button">
+            Option
+        </div>
+        <div class="button">
+            Option
+        </div>
+        <div class="button">
+            Option
+        </div>
+        <div class="button">
+            Option
+        </div>
+        <div class="button">
+            Option
+        </div>
+    </div>
+</body>
+</html>
