@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop-up</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <dialog id="popup">
+        <h1>This is a pop-up</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, rerum delectus nisi eaque labore recusandae
+            esse nostrum aliquam ad! Amet iusto nesciunt laudantium placeat, consectetur officia temporibus odio
+            molestiae accusamus!</p>
+        <button id="close-button">Ok</button>
+    </dialog>
+
+    <button id="show-button">Show popup</button>
+
+    <script defer>
+        const popup = document.getElementById('popup')
+        const showButton = document.getElementById('show-button')
+        const closeButton = document.getElementById('close-button')
+
+        function showPopup() {
+            popup.showModal()
+
+            popup.classList.add('popup-open')
+
+            const removeClassOnEnd = () => {
+                popup.classList.remove('popup-open')
+                popup.removeEventListener('animationend', removeClassOnEnd)
+            }
+
+            popup.addEventListener('animationend', removeClassOnEnd)
+        }
+
+        function closePopup() {
+            popup.classList.add('popup-close')
+
+            const closeOnEnd = () => {
+                popup.classList.remove('popup-close')
+                popup.close()
+
+                popup.removeEventListener('animationend', closeOnEnd)
+            }
+
+            popup.addEventListener('animationend', closeOnEnd)
+        }
+
+        showButton.addEventListener('click', showPopup)
+        closeButton.addEventListener('click', closePopup)
+    </script>
+</body>
+
+</html>
